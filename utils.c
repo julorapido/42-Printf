@@ -6,7 +6,7 @@
 /*   By: julessainthorant <marvin@42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 11:30:45 by julessainthor     #+#    #+#             */
-/*   Updated: 2024/05/24 11:29:17 by jsaintho         ###   ########.fr       */
+/*   Updated: 2024/06/04 11:57:33 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -42,7 +42,7 @@ int	ft_putnbr_base_l(t_li_ nbr, char *base, size_t is_unsigned)
 	int	i;
 	int	j;
 
-	j = NORM_MACRO(nbr, is_unsigned);
+	j = norm_macro(nbr, is_unsigned);
 	i = 0;
 	size_base = 0;
 	if (nbr < 0 && is_unsigned == 0)
@@ -91,4 +91,11 @@ int	ft_put_ptr_l(t_uli_ i)
 	while (o-- > 0)
 		write(1, &p[o], 1);
 	return (q + 2);
+}
+
+int	norm_macro(int x, int is)
+{
+	if (x < 0 && is == 0)
+		return (1);
+	return (0);
 }
